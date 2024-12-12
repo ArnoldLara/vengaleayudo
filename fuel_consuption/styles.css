@@ -1,0 +1,129 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background-color: #f9f9f9; */
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  .calculator-container {
+    /* background: #fff; */
+    background-color: #121212;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  h2 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    /* color: #5a5a5a; */
+    color: #bbbbbb;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .table {
+    margin: 20px auto; /* Adds margin top/bottom and centers horizontally */
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    color: #bbbbbb;
+  }
+
+  p,
+  label {
+    font-size: 0.9rem;
+    /* color: #777; */
+    color: #bbbbbb;
+
+  }
+
+  p{
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  input, select {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 75%;
+  }
+  
+  select {
+    max-width: 80px;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  button {
+    flex: 1;
+    padding: 10px;
+    background-color: #5f58e4e2;
+    color: white;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #4b44c4;
+  }
+  
+  button[type="reset"] {
+    background-color: #f44336;
+    cursor: no-drop;
+  }
+  
+  button[type="reset"]:hover {
+    background-color: #d32f2f;
+  }
+  
+  /* Responsividad */
+  @media (max-width: 480px) {
+    .calculator-container {
+      padding: 15px;
+    }
+  
+    h1 {
+      font-size: 1.2rem;
+    }
+  
+    button {
+      font-size: 0.8rem;
+    }
+  }
+  

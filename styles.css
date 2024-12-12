@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+.profile .avatar {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid #1da1f2;
+    margin-bottom: 20px;
+}
+
+.profile h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.profile h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.profile .location, 
+.profile .description {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #bbbbbb;
+}
+
+.social-links a {
+    margin: 0 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.social-links a:hover {
+    color: #1da1f2; /* Estilo de hover */
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons .button {
+    display: block;
+    background: #1f1f1f;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.buttons .button:hover {
+    background: #333;
+    border-color: #555;
+}
