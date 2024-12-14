@@ -200,99 +200,110 @@ document.getElementById('addRegisters').onclick=function(){
         //console.log("Last record:", keyPath);
         if(keyPath==undefined){
             console.log("No hay registros en la tabla");
+            if(Number(distance)>-1){
+                //Se abre la base de datos
+                let request = indexedDB.open('FuelConsumption', 1);
 
-            //Se abre la base de datos
-            let request = indexedDB.open('FuelConsumption', 1);
-
-            //Si la apertura es exitosa 
-            request.onsuccess = function(event) {
-                //Se crea una transacción de escritura para registrar la información
-                let db = event.target.result;
-                let transaction = db.transaction(['register'], 'readwrite');
-                let store = transaction.objectStore('register');
-
-                //Se crea un objeto con los datos regitrados en el formulario
-                let register = {
-                    date: date,
-                    distance: distance,
-                    fuelAmount: fuel,
-                    fuelConsumption: "NA"
-                };
-                //Se escribe en la base de datos el objeto creado
-                let request = store.add(register);
-                
-
-                //Si la escritura es correcta se muestra un mensaje de exito
+                //Si la apertura es exitosa 
                 request.onsuccess = function(event) {
-                    //Se limpian los campos del formulario
-                    document.getElementById('distance').value = "";
-                    document.getElementById('fuel').value = "";
-                    console.log("Registro agregado correctamente con ID:",event.target.result);
-                    displayData()
-                    
-                    
-                };
-                //si hay errores en la escritura se muestra el error
-                request.onerror = function(event) {
-                    console.error("Error adding register:", event.target.error);
-                };
-            };
-            request.onerror = function(event) {
-                console.error("Error opening database:", event.target.error);
-            };
+                    //Se crea una transacción de escritura para registrar la información
+                    let db = event.target.result;
+                    let transaction = db.transaction(['register'], 'readwrite');
+                    let store = transaction.objectStore('register');
 
+                    //Se crea un objeto con los datos regitrados en el formulario
+                    let register = {
+                        date: date,
+                        distance: distance,
+                        fuelAmount: fuel,
+                        fuelConsumption: "NA"
+                    };
+                    //Se escribe en la base de datos el objeto creado
+                    let request = store.add(register);
+                    
+
+                    //Si la escritura es correcta se muestra un mensaje de exito
+                    request.onsuccess = function(event) {
+                        //Se limpian los campos del formulario
+                        document.getElementById('distance').value = "";
+                        document.getElementById('fuel').value = "";
+                        console.log("Registro agregado correctamente con ID:",event.target.result);
+                        displayData()
+                        
+                        
+                    };
+                    //si hay errores en la escritura se muestra el error
+                    request.onerror = function(event) {
+                        console.error("Error adding register:", event.target.error);
+                    };
+                }  
+                request.onerror = function(event) {
+                    console.error("Error opening database:", event.target.error);
+                };
+      
+            }
+            else{
+                alert("El primer registro de Distancia Odometro no puede ser un numero negativo")
+            }
+           
 
         }
-        else if(Number(distance)-Number(keyPath.distance) > 0 && Number(fuel)>0){
-            //Se abre la base de datos
-            let request = indexedDB.open('FuelConsumption', 1);
+        else if(Number(distance)-Number(keyPath.distance) > 0){
+            if(Number(fuel)>0){
+                //Se abre la base de datos
+                let request = indexedDB.open('FuelConsumption', 1);
 
-            //Si la apertura es exitosa 
-            request.onsuccess = function(event) {
-                //Se crea una transacción de escritura para registrar la información
-                let db = event.target.result;
-                let transaction = db.transaction(['register'], 'readwrite');
-                let store = transaction.objectStore('register');
-
-                //Se crea un objeto con los datos regitrados en el formulario
-                let register = {
-                    date: date,
-                    distance: distance,
-                    fuelAmount: fuel,
-                    fuelConsumption: "NA"
-                };
-                //Se escribe en la base de datos el objeto creado
-                let request = store.add(register);
-                
-
-                //Si la escritura es correcta se muestra un mensaje de exito
+                //Si la apertura es exitosa 
                 request.onsuccess = function(event) {
-                    //Se limpian los campos del formulario
-                    document.getElementById('distance').value = "";
-                    document.getElementById('fuel').value = "";
+                    //Se crea una transacción de escritura para registrar la información
+                    let db = event.target.result;
+                    let transaction = db.transaction(['register'], 'readwrite');
+                    let store = transaction.objectStore('register');
 
-                    console.log("Registro agregado correctamente con ID:",event.target.result);
-
-
-                    //Se envia a la función de calcular el consumo el keypath donde se guardaron los registros, la distancia registrada y la cantidad de combustible registrada
-                    calculateConsumption(event.target.result,date,distance,fuel)
+                    //Se crea un objeto con los datos regitrados en el formulario
+                    let register = {
+                        date: date,
+                        distance: distance,
+                        fuelAmount: fuel,
+                        fuelConsumption: "NA"
+                    };
+                    //Se escribe en la base de datos el objeto creado
+                    let request = store.add(register);
                     
-                    
+
+                    //Si la escritura es correcta se muestra un mensaje de exito
+                    request.onsuccess = function(event) {
+                        //Se limpian los campos del formulario
+                        document.getElementById('distance').value = "";
+                        document.getElementById('fuel').value = "";
+
+                        console.log("Registro agregado correctamente con ID:",event.target.result);
+
+
+                        //Se envia a la función de calcular el consumo el keypath donde se guardaron los registros, la distancia registrada y la cantidad de combustible registrada
+                        calculateConsumption(event.target.result,date,distance,fuel)
+                        
+                        
+                    };
+                    //si hay errores en la escritura se muestra el error
+                    request.onerror = function(event) {
+                        console.error("Error adding register:", event.target.error);
+                    };
                 };
-                //si hay errores en la escritura se muestra el error
                 request.onerror = function(event) {
-                    console.error("Error adding register:", event.target.error);
+                    console.error("Error opening database:", event.target.error);
                 };
-            };
-            request.onerror = function(event) {
-                console.error("Error opening database:", event.target.error);
-            };
+
+            }else{
+                alert("El valor de combustible debe ser un numero mayor a Cero.")
+            }
+            
 
 
 
         }else{
             // alert("La distancia Odemetro ingresada es menor a la ultima distancia registrada o galones de gasolina es cero")
-            alert("Verifique los datos ingresados. La distancia registrada debe ser mayor a la ultima registrada y el combustible mayor a cero")
+            alert("El valor de distancia Odemetro debe ser mayor a la ultima registrada")
             
             //Esta condición es cuando el usuario ha ingresado una distancia menor que la ultima registrada
             //Se intenta borrar el registro del usuario y funciona pero entre en conflicto cuando el usuario hace un nuevo registro con la validación hecha para cuando la tabla no tiene registros porque se retorna undefined
