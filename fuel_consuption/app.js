@@ -364,14 +364,20 @@ document.getElementById('updRegisters').onclick = function() {
             let distance = document.getElementById('distance').value;
             let fuel = document.getElementById('fuel').value;
 
-            if(Number(distance) > 0 && Number(fuel)>0){
-                calculateConsumption(keyPath.id, date, distance, fuel);
-                //Se limpian los campos del formulario
-                document.getElementById('distance').value = "";
-                document.getElementById('fuel').value = "";
+            if(Number(distance) > 0){
+
+                if(Number(fuel) > 0){
+                    calculateConsumption(keyPath.id, date, distance, fuel);
+                    //Se limpian los campos del formulario
+                    document.getElementById('distance').value = "";
+                    document.getElementById('fuel').value = "";
+                }else{
+                    alert("El valor de combustible debe ser un numero mayor a Cero.")
+                }
+                
             }
             else{
-                alert("Verifique los datos ingresados. La distancia registrada debe ser mayor a la ultima registrada y el combustible mayor a cero")
+                alert("El valor de distancia Odemetro debe ser mayor a la ultima registrada")
 
             }
             
