@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <script src="wasm_exec.js"></script>
+    <script>
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
+      go.run(result.instance);
+    });
+
+    // Override console.log to print to an HTML element
+    const originalConsoleLog = console.log;
+    console.log = function(message) {
+      originalConsoleLog(message); // Still log to console
+      document.getElementById('output').innerText += message + '\n';
+    };
+    </script>
+  </head>
+  <body>
+    <p>Check the console!</p>
+    <pre id="output"></pre> <!-- Element to display the message -->
+  </body>
+</html>
