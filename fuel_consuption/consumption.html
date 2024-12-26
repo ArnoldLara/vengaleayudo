@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,45 +8,58 @@
   <link rel="stylesheet" href="styles.css">
   <!-- Standard favicon -->
   <link rel="icon" type="image/png" href="../images/favicon.png">
-    
+
   <!-- For iOS devices -->
   <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.png">
-  
+
   <!-- For different resolutions -->
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon.png">
 </head>
+
 <body>
   <div class="calculator-container">
     <h1>Rendimiento de combustible</h1>
-    <p>Para obtener un estimado de consumo de combustible más preciso las tanqueadas deben ser de tanque completo y no parcial.</p>
+    <p>Para obtener un estimado de consumo de combustible más preciso las tanqueadas deben ser de tanque completo y no
+      parcial.</p>
 
-    <div>
+    <!-- <div>
       <h2 id="msg_consum"></h2>
+    </div> -->
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+      <div class="circle" id="fuelCircle">
+        <div class="liquid">
+          <h1 id="msg_consum"></h1>
+        </div>
+      </div>
     </div>
-    
+
+
+    <br>
+
     <form>
-        <div class="input-group">
-          <label for="distance">Distancia Odometro</label>
-          <input type="number" id="distance" placeholder="0">
-          <h2>km</h2>
-        </div>
+      <div class="input-group">
+        <label for="distance">Distancia Odometro</label>
+        <input type="number" id="distance" placeholder="0">
+        <h2>km</h2>
+      </div>
 
-        <div class="input-group">
-          <label for="fuel">Combustible tanqueado</label>
-          <input type="number" id="fuel" placeholder="0">
-          
-          <h2>Galones</h2>
-        </div>
+      <div class="input-group">
+        <label for="fuel">Combustible tanqueado</label>
+        <input type="number" id="fuel" placeholder="0">
 
-        <div class="buttons">
-          <button type="button" id="addRegisters">Agregar registro</button>
-          <button type="button" id="updRegisters">Actualizar ultimo registro</button>
-        </div>
-        <button type="reset" id="delRegisters">Borrar registros</button>
+        <h2>Galones</h2>
+      </div>
+
+      <div class="buttons">
+        <button type="button" id="addRegisters">Agregar registro</button>
+        <button type="button" id="updRegisters">Actualizar ultimo registro</button>
+      </div>
+      <button type="reset" id="delRegisters">Borrar registros</button>
     </form>
-    <div id="dataTable" class="table"></div>    
+    <div id="dataTable" class="table"></div>
   </div>
   <script src="app.js"></script>
 </body>
+
 </html>

@@ -126,4 +126,34 @@ body {
       font-size: 0.8rem;
     }
   }
+
+
+.circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #555;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.liquid {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffcc00;
+    animation: wave 3s infinite;
+}
+
+@keyframes wave {
+    0%, 100% {
+        transform: translateY(20%);
+    }
+    50% {
+        transform: translateY(45%);
+    }
+}
   

@@ -1,3 +1,15 @@
+function initialize(){
+    
+    var msgConsum = document.getElementById("msg_consum").textContent.trim();
+    var fuelCircle = document.getElementById("fuelCircle");
+
+    if (msgConsum === "") {
+        fuelCircle.style.display = "none";
+    } else {
+        fuelCircle.style.display = "block";
+    }
+    initDB()
+}
 function initDB(){
     let request = indexedDB.open('FuelConsumption',1);
     request.onupgradeneeded = function(event) {
@@ -95,7 +107,7 @@ function calculateConsumption(keyPath,date,distance,fuel){
                 displayData()
             }else{
                 let consumption = (distance - last.distance) / fuel;
-                consumption = consumption.toFixed(2);
+                consumption = consumption.toFixed(1);
                 // updateConsumption(keyPath,date,distance,fuel,consumption);
 
                 let request = indexedDB.open('FuelConsumption', 1);
@@ -107,10 +119,13 @@ function calculateConsumption(keyPath,date,distance,fuel){
                     updateRequest.onsuccess = function(event) {
                         console.log("Registro de consumo actualizado en BD",event.target.result);
 
-                        let msg_consum = "El consumo de combustible es de "+ consumption + " km/galon" ;
+                        var fuelCircle = document.getElementById("fuelCircle");
+                        fuelCircle.style.display = "block";
+
+                        let msg_consum = consumption + " km/gal" ;
                         // Display table in document
                         document.getElementById('msg_consum').innerHTML = msg_consum;
-
+                        
                         displayData()
                     };  
                 }
@@ -171,7 +186,11 @@ function updateConsumption(keyPath,date,distance,fuel,consumption){
         updateRequest.onsuccess = function(event) {
             console.log("Registro de consumo actualizado en BD",event.target.result);
 
-            let msg_consum = "El consumo de combustible es de "+ consumption + " km/galon" ;
+            // let msg_consum = "El consumo de combustible es de "+ consumption + " km/galon" ;
+            var fuelCircle = document.getElementById("fuelCircle");
+            fuelCircle.style.display = "block";
+            
+            let msg_consum = consumption + " km/gal" ;
             // Display table in document
             document.getElementById('msg_consum').innerHTML = msg_consum;
 
@@ -183,7 +202,7 @@ function updateConsumption(keyPath,date,distance,fuel,consumption){
 }
 
 // Initialize the database and display when page loads
-document.addEventListener('DOMContentLoaded', initDB())
+document.addEventListener('DOMContentLoaded', initialize())
 
 //Se crea el evento para leer el evento de Click en el boton de guardar
 document.getElementById('addRegisters').onclick=function(){
@@ -343,8 +362,11 @@ document.getElementById('delRegisters').onclick = function() {
                 clearRequest.onsuccess = function() {
                     
                     // Refresh the display
+                    var fuelCircle = document.getElementById("fuelCircle");
+                    fuelCircle.style.display = "none";
                     let msg_consum = "" ;
                     document.getElementById('msg_consum').innerHTML = msg_consum
+
                     displayData();
                     alert("Los registros han sido eliminados");
                 };
