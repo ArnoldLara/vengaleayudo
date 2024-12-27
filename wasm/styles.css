@@ -31,3 +31,9 @@ body, html {
     width: 20%;
     right:0;
   }
+
+  .button_back i {
+    font-size: 32px; /* Aumentar el tamaño del icono */
+    color: #1da1f2;  /* Cambiar el color del icono */
+  }
+  

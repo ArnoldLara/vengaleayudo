@@ -98,7 +98,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   button:hover {
     background-color: #4b44c4;
   }
@@ -156,4 +156,12 @@ body {
         transform: translateY(45%);
     }
 }
+
+.button_back i {
+  font-size: 32px; /* Aumentar el tamaño del icono */
+  color: #5666f1; /* Cambiar el color del icono */
+  /* color: #1da1f2 */
+}
+
+
   
