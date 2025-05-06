@@ -1,0 +1,32 @@
+{
+    "name": "VengaleAyudo",
+    "short_name": "VengaleAyudo",
+    "description": "Aplicación que le ayudará a llevar un registro del consumo de combustible de su vehiculo.",
+    "start_url": "/fuel_consuption/consumption.html",
+    "display": "fullscreen",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "orientation": "portrait",
+    "icons": [
+    {
+      "src": "icons/icon48x48.png",
+      "sizes": "48x48"
+    },
+    {
+        "src": "icons/icon72x72.png",
+        "sizes": "72x72"
+    },
+    {
+        "src": "icons/icon96x96.png",
+        "sizes": "96x96"
+    },
+    {
+        "src": "icons/icon144x144.png",
+        "sizes": "144x144"
+    },
+    {
+        "src": "icons/icon192x192.png",
+        "sizes": "192x192"
+    }
+  ]
+  }
